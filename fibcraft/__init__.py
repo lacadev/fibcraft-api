@@ -15,7 +15,7 @@ if not SECRET_KEY:
 def create_app(test_config=None):
     # create and configure app
     app = Flask(__name__, instance_relative_config=True)
-    app.logger.setLevel("INFO")
+
     app.config.from_mapping(
         SECRET_KEY=SECRET_KEY,
         DATABASE=os.path.join(app.instance_path, "fibcraft.sqlite"),
@@ -33,6 +33,8 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
+
+    app.logger.setLevel("INFO")
 
     db.init_app(app)
 
