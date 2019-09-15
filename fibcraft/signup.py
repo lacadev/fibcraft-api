@@ -1,5 +1,6 @@
 import functools
 
+from datetime import datetime
 from flask import (
     Blueprint,
     current_app,
@@ -40,7 +41,8 @@ def register():
 
         if error is None:
             db.execute(
-                "INSERT INTO user (email, username) VALUES (?, ?)", (email, username)
+                "INSERT INTO user (email, username, joiningDate) VALUES (?, ?, ?)",
+                (email, username, datetime.now()),
             )
             db.commit()
             msg = f"{username} for {email} registered successfully!"

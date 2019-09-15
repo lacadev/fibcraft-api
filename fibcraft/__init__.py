@@ -1,16 +1,24 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect, url_for
 
 from . import db
 from . import signup
 
 
+SECRET_KEY = os.environ.get("SECRET_KEY")
+
+if not SECRET_KEY:
+    raise ValueError("No SECRET_KEY set for Flask application")
+
+
 def create_app(test_config=None):
     # create and configure app
     app = Flask(__name__, instance_relative_config=True)
+    app.logger.setLevel("INFO")
     app.config.from_mapping(
-        SECRET_KEY="dev", DATABASE=os.path.join(app.instance_path, "fibcraft.sqlite")
+        SECRET_KEY=SECRET_KEY,
+        DATABASE=os.path.join(app.instance_path, "fibcraft.sqlite"),
     )
 
     if test_config is None:
@@ -29,5 +37,9 @@ def create_app(test_config=None):
     db.init_app(app)
 
     app.register_blueprint(signup.bp)
+
+    @app.route("/")
+    def index():
+        return redirect(url_for("signup.register"))
 
     return app
