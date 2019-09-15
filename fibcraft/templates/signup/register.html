@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper green lighten-1">
+      <a href="#!" class="brand-logo center">*INSERT FIBCRAFT LOGO HERE*</a>
+    </div>
+  </nav>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="container">
+      <form class="row" action="/signup/" method="post">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="willyrex777" name="username" id="mc_name" type="text" class="validate" required>
+            <label for="mc_name">Minecraft name</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input placeholder="name.surname@est.fib.upc.edu" name="email" id="email_address" type="email" class="validate" required>
+            <label for="email_address">FIB email address</label>
+          </div>
+        </div>
+        <button type="submit" class="btn waves-effect waves-light green darken-3 col s10 offset-s1 m4 offset-m4">LET ME IN ALREADY</button>
+      </form>
+    </div>
+  </div>
+
+	<!-- Signup Result Modal -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+				{% for category, message in messages %}
+					<div id="modal1" class="modal">
+							<div class="modal-content">
+								{% if category == "error" %}
+									<h4 class="red-text">Error</h4>
+									<p>{{ message }}</p>
+								{% endif %}
+								{% if category == "message" %}
+									<h4 class="green-text">Success!</h4>
+									<p>{{ message }}</p>
+								{% endif %}
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+							</div>
+						</div>
+				{% endfor %}
+		{% endif %}
+	{% endwith %}<Paste>
+
+</body>
+<script>
+  M.AutoInit();
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elem = document.getElementById('modal1');
+    var instance = M.Modal.getInstance(elem);
+    instance.open();
+  });
+</script>
+
+</html>
