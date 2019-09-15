@@ -1,11 +1,19 @@
 import functools
 
-from flask import Blueprint, current_app, flash, redirect, render_template, request, url_for
+from flask import (
+    Blueprint,
+    current_app,
+    flash,
+    redirect,
+    render_template,
+    request,
+    url_for,
+)
 
 from fibcraft.db import get_db
 
 
-bp = Blueprint('signup', __name__, url_prefix='/signup')
+bp = Blueprint("signup", __name__, url_prefix="/signup")
 
 
 @bp.route("/", methods=("GET", "POST"))
