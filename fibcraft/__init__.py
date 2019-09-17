@@ -7,9 +7,9 @@ from . import signup
 
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
-SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
-DOMAIN = os.environ.get('DOMAIN')
-MAIL_FROM = os.environ.get('MAIL_FROM')
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+DOMAIN = os.environ.get("DOMAIN")
+MAIL_FROM = os.environ.get("MAIL_FROM")
 
 if not SECRET_KEY:
     raise ValueError("No SECRET_KEY set for Flask application")
