@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="row">
+    <div class="container">
+      <form class="row" action="/signup/verification/" method="post">
+        <div class="row">
+          <div class="input-field col s12 m8 offset-m2">
+            <input placeholder="username.surname@est.fib.upc.edu" name="email" id="email" type="email" class="validate" required>
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <input type="hidden" name="token" id="token" required>
+        <button type="submit" class="btn waves-effect waves-light green darken-3 col s10 offset-s1 m4 offset-m4">VERIFY</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %}
+var url = new URL(window.location.href);
+var token = url.searchParams.get("token");
+console.log(token);
+document.getElementById("token").value = token;
+{% endblock %}
+

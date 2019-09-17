@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   email TEXT UNIQUE NOT NULL,
   username TEXT UNIQUE NOT NULL,
-  joiningDate timestamp NOT NULL
+  joiningDate timestamp NOT NULL,
+  verified INTEGER NOT NULL
 );
