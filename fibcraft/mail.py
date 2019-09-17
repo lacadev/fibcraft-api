@@ -25,9 +25,9 @@ def send_mail(to: str, subject: str, msg: str):
     current_app.logger.info(response)
     return response
 
-# TODO: Put an expiration date to the link (check day of registration in DB)
 
 def send_verification_mail(to: str):
+    # TODO: Combine mail and joinedDate to create the hash
     hashed_mail = generate_password_hash(to)
     verification_url = f"http://{current_app.config['DOMAIN']}{url_for('signup.verify')}?token={hashed_mail}"
     subject = "FIBCRAFT Verification"

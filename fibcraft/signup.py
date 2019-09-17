@@ -82,6 +82,8 @@ def verify():
                 time_since_reg = datetime.now() - user["joiningDate"]
                 if time_since_reg > timedelta(days=1):
                     db.execute("DELETE FROM user WHERE email=?", (plain_mail,))
+                    db.commit()
+                    current_app.logger.info(f"{plain_mail} deleted from the DB")
                     error = f"It has been more than 1 day since you registered. Please, register again"
 
             if error is None:
