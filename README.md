@@ -3,6 +3,9 @@ Create a `.env` file in the root directory of the project and put inside the req
 ```
 FLASK_APP=fibcraft
 SECRET_KEY=XXXXXXXXXXXXXXXX
+SENDGRID_API_KEY=XXXXXXXXXXXXXXX
+DOMAIN=exampledomain.com
+MAIL_FROM=example@something.com
 ```
 _To randomly generate a new secret key:_
 ```
