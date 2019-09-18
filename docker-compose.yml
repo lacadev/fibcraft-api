@@ -9,3 +9,14 @@ services:
       - ./:/app/
     env_file:
       - .env
+  minecraft-server:
+    ports:
+      - "25565:25565"
+    volumes:
+      - ./mc-paper:/data
+    environment:
+      EULA: "true"
+      TYPE: PAPER
+      VERSION: LATESTS
+    command: --noconsole
+    image: itzg/minecraft-server
