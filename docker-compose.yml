@@ -17,6 +17,6 @@ services:
     environment:
       EULA: "true"
       TYPE: PAPER
-      VERSION: LATESTS
+      VERSION: LATEST
     command: --noconsole
     image: itzg/minecraft-server
