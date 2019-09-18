@@ -10,6 +10,14 @@ You know what that means too right? No? K lemme spell it out for ya. Because of 
 Btw, _premium_ means having a legal (bought) copy of the game. For a server that means only allowing people that have bought the game. But we are students, we are broke, so none of that.
 
 ## You wanna host this yourself? Ight
+### Requirements
+Not much really:
+- Sendgrid API set up
+- Custom domain
+- Server to host this thing
+- LOTS OF RAM AND CPU FOR ALL THE PEOPLE THAT WILL JOIN THE SERVER AM I RIGHT?
+
+### Procedure
 Create a `.env` file in the root directory of the project and put inside the required environment variables:
 ```
 FLASK_APP=fibcraft
