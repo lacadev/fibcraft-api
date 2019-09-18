@@ -5,7 +5,7 @@ So the project is made out of your usually dockerized Minecraft server AAAND a w
 
 That's right, that means the server has whitelisting. Only FIB students allowed, now that's what I call exclusivity. To accomplish that, once you submit the username and FIB email address, you'll receive an email from FIBCraft to verify your account. Click on the URL you'll be given and BOOM, you done vro. You are now able to join the server.
 
-You know what that means too right? No? K lemme spell it out for ya. Because of the email verification, each person will only be able to join the server with one username so... no need to make the server premiumto ensure that! That's right baby, you got an illegal copy of Minecraft? We got you covered! THIS SERVER IS **NOT PREMIUM**. I mean, you can still join with a premium account of course. In fact, we encourage that, let's support the devs :D
+You know what that means too right? No? K lemme spell it out for ya. Because of the email verification, each person will only be able to join the server with one username so... no need to make the server premium to ensure that! That's right baby, you got an illegal copy of Minecraft? We got you covered! THIS SERVER IS **NOT PREMIUM**. I mean, you can still join with a premium account of course. In fact, we encourage that, let's support the devs :D
 
 Btw, _premium_ means having a legal (bought) copy of the game. For a server that means only allowing people that have bought the game. But we are students, we are broke, so none of that.
 
