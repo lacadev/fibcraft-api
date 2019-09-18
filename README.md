@@ -1,4 +1,6 @@
-# FIBCraft :pick:
+# FIBCraft [WIP] :pick:
+### Current status
+Missing whitelisting in realtime and adding those sweet plugins
 ## What
 This is a minecraft server for students at FIB! That's about it really... No wait, there's more.
 So the project is made out of your usually dockerized Minecraft server AAAND a website to, wait for it, register the Minecraft username you we'll use with your FIB email!
@@ -18,7 +20,7 @@ Not much really:
 - LOTS OF RAM AND CPU FOR ALL THE PEOPLE THAT WILL JOIN THE SERVER AM I RIGHT?
 
 ### Procedure
-Create a `.env` file in the root directory of the project and put inside the required environment variables:
+- Create a `.env` file in the root directory of the project and put inside the required environment variables:
 ```bash
 FLASK_APP=fibcraft
 SECRET_KEY=XXXXXXXXXXXXXXXX
@@ -30,7 +32,8 @@ _To randomly generate a new secret key:_
 ```bash
 python -c "import os; print(os.urandom(16))"
 ```
-Finally, run:
+- Make sure ports 80 and 25565 are available (looking at you firewall):
+- Finally, run:
 ```bash
 docker-compose up
 ```
