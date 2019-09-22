@@ -1,5 +1,4 @@
 import functools
-import docker
 
 from datetime import datetime, timedelta
 from flask import (
@@ -15,6 +14,7 @@ from werkzeug.security import check_password_hash
 
 from api.db import get_db
 from api.mail import send_verification_mail
+from api.mc import whitelist
 
 
 bp = Blueprint("signup", __name__, url_prefix="/signup")
@@ -88,16 +88,12 @@ def verify():
 
             if error is None:
                 current_app.logger.info(f"{plain_mail} has been verified")
-                client = docker.from_env()
-                exit_code, output = client.containers.get("fibcraft_server").exec_run(f"rcon-cli 'whitelist add {user['username']}'")
-                if exit_code == 0:
-                    db.execute("UPDATE user SET verified=? WHERE email=?", (1, plain_mail))
-                    db.commit()
-                    current_app.logger.info(f"{plain_mail} : {user['username']} - whitelisted")
-                    msg = f"Your email address has been verified successfully!"
-                    flash(msg)
-                else:
-                    error = "Something failed during the whitelisting. We aplogize, please try again."
+                resp = whitelist(user["username"])
+                db.execute("UPDATE user SET verified=? WHERE email=?", (1, plain_mail))
+                db.commit()
+                current_app.logger.info(f"{plain_mail} : {user['username']} - whitelisted")
+                msg = f"Your email address has been verified successfully!"
+                flash(msg)
 
         if error is not None:
             flash(error, "error")

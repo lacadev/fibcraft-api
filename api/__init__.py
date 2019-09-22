@@ -8,17 +8,23 @@ from . import signup
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-DOMAIN = os.environ.get("DOMAIN")
+API_DOMAIN = os.environ.get("API_DOMAIN")
 MAIL_FROM = os.environ.get("MAIL_FROM")
+RCON_IP = os.environ.get("RCON_IP")
+RCON_PASSWORD = os.environ.get("RCON_PASSWORD")
 
 if not SECRET_KEY:
     raise ValueError("No SECRET_KEY set for Flask application")
 if not SENDGRID_API_KEY:
     raise ValueError("No SENGRID_API_KEY set for Flask application")
-if not DOMAIN:
+if not API_DOMAIN:
     raise ValueError("No DOMAIN set for Flask application")
 if not MAIL_FROM:
     raise ValueError("No MAIL_FROM set for Flask application")
+if not RCON_IP:
+    raise ValueError("No RCON_IP set for Flask application")
+if not RCON_PASSWORD:
+    raise ValueError("No RCON_PASSWORD set for Flask application")
 
 
 def create_app(test_config=None):
@@ -29,8 +35,10 @@ def create_app(test_config=None):
         SECRET_KEY=SECRET_KEY,
         DATABASE=os.path.join(app.instance_path, "fibcraft.sqlite"),
         SENDGRID_API_KEY=SENDGRID_API_KEY,
-        DOMAIN=DOMAIN,
+        API_DOMAIN=API_DOMAIN,
         MAIL_FROM=MAIL_FROM,
+        RCON_IP=RCON_IP,
+        RCON_PASSWORD=RCON_PASSWORD,
     )
 
     if test_config is None:

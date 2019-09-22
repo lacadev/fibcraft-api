@@ -29,7 +29,7 @@ def send_mail(to: str, subject: str, msg: str):
 def send_verification_mail(to: str):
     # TODO: Combine mail and joinedDate to create the hash
     hashed_mail = generate_password_hash(to)
-    verification_url = f"http://{current_app.config['DOMAIN']}{url_for('signup.verify')}?token={hashed_mail}"
+    verification_url = f"http://{current_app.config['API_DOMAIN']}{url_for('signup.verify')}?token={hashed_mail}"
     subject = "FIBCRAFT Verification"
     msg = (
         "Hi there you pretty pie! So we've been told you want to join FIBCRAFT."
