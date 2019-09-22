@@ -1,5 +1,5 @@
 ---
-version: '3'
+version: "3.7"
 services:
   api:
     container_name: fibcraft_api
@@ -11,15 +11,3 @@ services:
       - ./:/app/
     env_file:
       - .env
-  minecraft-server:
-    container_name: fibcraft_server
-    ports:
-      - "25565:25565"
-    volumes:
-      - ./mc-paper:/data
-    environment:
-      EULA: "true"
-      TYPE: PAPER
-      VERSION: LATEST
-    command: --noconsole
-    image: itzg/minecraft-server

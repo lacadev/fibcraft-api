@@ -1,4 +1,5 @@
 import functools
+import docker
 
 from datetime import datetime, timedelta
 from flask import (
@@ -12,8 +13,8 @@ from flask import (
 )
 from werkzeug.security import check_password_hash
 
-from fibcraft.db import get_db
-from fibcraft.mail import send_verification_mail
+from api.db import get_db
+from api.mail import send_verification_mail
 
 
 bp = Blueprint("signup", __name__, url_prefix="/signup")
@@ -72,8 +73,7 @@ def verify():
         else:
             db = get_db()
             user = db.execute(
-                "SELECT * FROM user WHERE email = ?", (plain_mail,)
-            ).fetchone()
+                "SELECT * FROM user WHERE email = ?", (plain_mail,)).fetchone()
 
             if user is None:
                 error = f"The email address {plain_mail} is not registered"
@@ -87,13 +87,21 @@ def verify():
                     error = f"It has been more than 1 day since you registered. Please, register again"
 
             if error is None:
-                db.execute("UPDATE user SET verified=? WHERE email=?", (1, plain_mail))
-                db.commit()
                 current_app.logger.info(f"{plain_mail} has been verified")
-                msg = f"Your email address has been verified successfully!"
-                flash(msg)
+                client = docker.from_env()
+                exit_code, output = client.containers.get("fibcraft_server").exec_run(f"rcon-cli 'whitelist add {user['username']}'")
+                if exit_code == 0:
+                    db.execute("UPDATE user SET verified=? WHERE email=?", (1, plain_mail))
+                    db.commit()
+                    current_app.logger.info(f"{plain_mail} : {user['username']} - whitelisted")
+                    msg = f"Your email address has been verified successfully!"
+                    flash(msg)
+                else:
+                    error = "Something failed during the whitelisting. We aplogize, please try again."
 
-        flash(error, "error")
+        if error is not None:
+            flash(error, "error")
+
         return redirect(url_for("signup.register"))
 
     return render_template("signup/verification.html", title="FIBCRAFT Verification")
