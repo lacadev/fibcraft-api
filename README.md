@@ -1,6 +1,6 @@
 # FIBCraft [WIP] :pick:
 ### Current status
-Works in Vanilla. Missing whitelisting in realtime and adding those sweet plugins.
+Works in Vanilla. Can whitelist in real time (yaay!). Only missing to configure the Server plugins (that's for another repo tho).
 ## What
 This is a minecraft server for students at FIB! That's about it really... No wait, there's more.
 So the project is made out of your usually dockerized Minecraft server AAAND a website to, wait for it, register the Minecraft username you we'll use with your FIB email!
