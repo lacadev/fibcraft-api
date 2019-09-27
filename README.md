@@ -1,6 +1,7 @@
 # FIBCraft [WIP] :pick:
 ### Current status
 Works in Vanilla. Can whitelist in real time (yaay!). Only missing to configure the Server plugins (that's for another repo tho).
+Also, at some point it should use HTTPS instead of HTTP. Maybe add an Nginx container to `docker-compose.yml` and let it handle the SSL certs.
 ## What
 This is a minecraft server for students at FIB! That's about it really... No wait, there's more.
 So the project is made out of your usually dockerized Minecraft server AAAND a website to, wait for it, register the Minecraft username you we'll use with your FIB email!
@@ -25,14 +26,21 @@ Not much really:
 FLASK_APP=fibcraft
 SECRET_KEY=XXXXXXXXXXXXXXXX
 SENDGRID_API_KEY=XXXXXXXXXXXXXXX
-DOMAIN=exampledomain.com
+API_DOMAIN=exampledomain.com
 MAIL_FROM=example@something.com
+RCON_IP=XXX.XXX.XXX.XXX
+RCON_PASSWORD=XXXXXXXXXXXXX
 ```
 _To randomly generate a new secret key:_
 ```bash
 python -c "import os; print(os.urandom(16))"
 ```
-- Make sure ports 80 and 25565 are available (looking at you firewall):
+- Make sure port 80 isSECRET_KEY = os.environ.get("SECRET_KEY")
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+API_DOMAIN = os.environ.get("API_DOMAIN")
+MAIL_FROM = os.environ.get("MAIL_FROM")
+RCON_IP = os.environ.get("RCON_IP")
+RCON_PASSWORD = os.environ.get("RCON_PASSWORD") available (looking at you firewall):
 - Finally, run:
 ```bash
 docker-compose up
