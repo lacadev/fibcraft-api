@@ -11,4 +11,18 @@ services:
       - ./:/app/
     env_file:
       - .env
-    # network_mode: "host"
+      
+  minecraft-server:
+    container_name: fibcraft_server
+    ports:
+      - "25565:25565"
+      - "25575:25575"
+    volumes:
+      - ./mc-paper:/data
+    environment:
+      EULA: "true"
+      TYPE: PAPER
+      VERSION: LATEST
+      MEMORY: 16G
+    command: --noconsole
+    image: itzg/minecraft-server
