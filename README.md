@@ -1,4 +1,4 @@
-# FIBCraft [WIP] :pick:
+# FIBCraft :pick:
 ### Current status
 Works in Vanilla. Can whitelist in real time (yaay!). Only missing to configure the Server plugins (that's for another repo tho).
 Also, at some point it should use HTTPS instead of HTTP. Maybe add an Nginx container to `docker-compose.yml` and let it handle the SSL certs.
